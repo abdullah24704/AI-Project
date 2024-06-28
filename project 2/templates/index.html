@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Frontend</title>
+    <style>
+        
+        /* Basic styling for better appearance */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            display: flex; /* Use flex container */
+            justify-content: space-between; /* Space items evenly */
+            align-items: center; /* Center items vertically */
+        }
+
+        form {
+            max-width: 400px;
+            padding 30px
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Hide the user prompt input initially */
+        #userPromptInput {
+            display: none;
+        }
+
+        /* Set a maximum width for the image */
+        img {
+            max-width: 50%; /* Make sure the image doesn't exceed its container */
+            height: 93vh; /* Cover the full viewport height */
+        }
+
+        /* Adjust the width of the form container */
+        .form-container {
+            margin-left: 50px;
+            padding: 20px;
+            flex: 1; /* Allow the form container to take remaining space */
+        }
+      
+    </style>
+    <script>
+        // Function to show or hide the user prompt input based on the selected command
+        function toggleUserPromptInput() {
+            var commandInput = document.getElementById('user_input');
+            var userPromptInput = document.getElementById('userPromptInput');
+
+            // If the command is "use ai," show the user prompt input, otherwise hide it
+            userPromptInput.style.display = (commandInput.value.toLowerCase() === 'use ai') ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <img src="https://media.giphy.com/media/CVtNe84hhYF9u/giphy.gif" alt="Robot">
+
+    <div class="form-container">
+        <form action="/run_script" method="post">
+            <h1>Things I Can Do</h1>
+            <ul>
+                <li>Open browser</li>
+                <li>Play music</li>
+                <li>Show the time</li>
+                <li>Play a game</li>
+                <li>Take a photo</li>
+                <li>Tell a joke</li>
+                <li>Use AI</li>
+            
+            </ul>
+            <label for="user_input">Enter Command:</label>
+            <input type="text" id="user_input" name="user_input" required oninput="toggleUserPromptInput()">
+            <!-- Additional input field for user prompt -->
+            <div id="userPromptInput">
+                <label for="user_prompt">Enter Prompt:</label>
+                <input type="text" id="user_prompt" name="user_prompt">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+  
+</body>
+</html>
